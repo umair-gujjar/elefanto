@@ -1,0 +1,11 @@
+## Generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+
+## PHP specific
+/vendor
+composer.phar
+composer.lock
