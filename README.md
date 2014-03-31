@@ -1,3 +1,4 @@
-# Elefanto project ( Alpha )
+# Elefanto
 
-Elefanto is a micro framework based on PHP.
+Elefanto, is a minimalist Web Framework based on PHP
+
