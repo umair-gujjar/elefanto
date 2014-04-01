@@ -15,7 +15,7 @@
             "type": "package",
             "package": {
                 "name": "nanoninja/elefanto",
-                "version": "1.0.0",
+                "version": "dev-master",
                 "dist": {
                     "url": "https://github.com/nanoninja/elefanto/archive/master.zip",
                     "type": "zip"
@@ -23,7 +23,7 @@
                 "source": {
                     "url": "https://github.com/nanoninja/elefanto.git",
                     "type": "git",
-                    "reference": "1.0.0"
+                    "reference": "master"
                 }
             }
         }
