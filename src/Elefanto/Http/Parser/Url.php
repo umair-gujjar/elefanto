@@ -69,7 +69,7 @@ class Url
     {
         $this->setRawUrl($url);
 
-	if (null !== $label) { 
+        if (null !== $label) {
             $this->setLabel($label);
         }
     }
