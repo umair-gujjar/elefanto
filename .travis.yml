@@ -10,6 +10,7 @@ before_script:
     - php composer.phar install
     - php composer.phar selfupdate
     ## Pear
+    - PWD=`pwd`
     - pear config-set preferred_state beta
     - pear update
     - pear upgrade-all
@@ -18,6 +19,6 @@ before_script:
 
 script:
     ## PHP_CodeSniffer
-    - phpcs --standard=PSR2 src/
+    - phpcs --standard=PSR2 --extension=php --warning-severity=0 $PWD/src/
     ## PHPUnit
     - phpunit
