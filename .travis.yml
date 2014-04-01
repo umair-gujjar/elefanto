@@ -33,4 +33,4 @@ script:
     ## PHPLOC
     - php phploc.phar src/
     ## PHPUnit
-    phpunit
+    - phpunit
