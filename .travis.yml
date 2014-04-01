@@ -9,13 +9,16 @@ before_script:
     - curl -s http://getcomposer.org/installer | php
     - php composer.phar install
     - php composer.phar selfupdate
-    ## PHP Copy/Paster
+    ## PHP Copy/Paste
     - curl -o phpcpd.phar https://phar.phpunit.de/phpcpd.phar
     ## Pear
     - pear config-set preferred_state beta
+    - pear channel-discover pear.phpmd.org
+    - pear channel-discover pear.pdepend.org
     - pear update
     - pear upgrade-all
     - pear install --alldeps PHP_CodeSniffer
+    - pear install --alldeps phpmd/PHP_PMD
     - phpenv rehash
 
 script:
@@ -25,3 +28,5 @@ script:
     - phpcs --standard=PSR2 src/
     ## PHP Copy/Paste
     - php phpcpd.phar --verbose src/
+    ## PHP Mess Detector
+    - phpmd src/ text codesize,unusedcode,naming,design
