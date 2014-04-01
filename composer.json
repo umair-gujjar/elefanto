@@ -2,6 +2,7 @@
     "name": "nanoninja/elefanto",
     "type": "library",
     "description": "Elefanto, is a minimalist Web Framework based on PHP",
+    "minimum-stability": "dev",
     "keywords": ["elefanto", "framework"],
     "license": "BSD-style",
     "authors": [
