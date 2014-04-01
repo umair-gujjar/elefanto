@@ -6,5 +6,5 @@ Elefanto, is a minimalist Web Framework based on PHP
 
 > **Note:** This is an **ALPHA** (not production-ready)
 
-### Licence
+### License
 The elefanto framework is open-sourced software licensed under the [BSD-style](http://opensource.org/licenses/BSD-3-Clause)
