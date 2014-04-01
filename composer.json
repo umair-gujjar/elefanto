@@ -35,7 +35,7 @@
         "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
-        "psr-4": {
+        "psr-0": {
             "Elefanto\\": ["src/", "tests/"]
         }
     }
