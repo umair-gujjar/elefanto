@@ -360,4 +360,3 @@ class Url
         return $this;
     }
 }
-
