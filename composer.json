@@ -10,15 +10,33 @@
             "email": "vincent@nanoninja.org"
         }
     ],
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "nanoninja/elefanto",
+                "version": "1.0.0",
+                "dist": {
+                    "url": "https://github.com/nanoninja/elefanto/archive/master.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/nanoninja/elefanto.git",
+                    "type": "git",
+                    "reference": "1.0.0"
+                }
+            }
+        }
+    ],
     "required": {
-        "php": ">=5.4"
+        "php": ">=5.4.0"
     },
     "required-dev": {
-        "phpunit/phpunit": "3.7.x-dev"
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
         "psr-4": {
-            "Elefanto\\": "src"
+            "Elefanto\\": ["src/", "tests/"]
         }
     }
 }
