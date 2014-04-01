@@ -23,5 +23,3 @@ script:
     - phpunit
     ## PHP_CodeSniffer
     - phpcs --standard=PSR2 src/
-    ## PHP Copy/Paste
-    - php phpcpd.phar --verbose src/
