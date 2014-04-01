@@ -9,8 +9,6 @@ before_script:
     - curl -s http://getcomposer.org/installer | php
     - php composer.phar install
     - php composer.phar selfupdate
-    ## PHP Copy/Paste
-    - curl -o phpcpd.phar https://phar.phpunit.de/phpcpd.phar
     ## Pear
     - pear config-set preferred_state beta
     - pear update

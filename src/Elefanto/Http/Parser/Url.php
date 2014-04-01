@@ -67,8 +67,11 @@ class Url
      */
     public function __construct($url, $label = null)
     {
-        $this->setRawUrl($url)
-             ->setLabel($label);
+        $this->setRawUrl($url);
+
+	if (null !== $label) { 
+            $this->setLabel($label);
+        }
     }
 
     /**
