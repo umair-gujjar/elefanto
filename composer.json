@@ -1,0 +1,24 @@
+{
+    "name": "nanoninja/elefanto",
+    "type": "library",
+    "description": "Elefanto, is a minimalist Web Framework based on PHP",
+    "keywords": ["elefanto", "framework"],
+    "license": "BSD-style",
+    "authors": [
+        {
+            "name": "Vincent Letourneau",
+            "email": "vincent@nanoninja.org"
+        }
+    ],
+    "required": {
+        "php": ">=5.4"
+    },
+    "required-dev": {
+        "phpunit/phpunit": "3.7.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elefanto\\": "src"
+        }
+    }
+}
