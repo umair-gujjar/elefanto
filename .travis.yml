@@ -9,6 +9,8 @@ before_script:
     - curl -s http://getcomposer.org/installer | php
     - php composer.phar install
     - php composer.phar selfupdate
+    ## PHP Copy/Paster
+    - curl -o phpcpd.phar https://phar.phpunit.de/phpcpd.phar
     ## Pear
     - pear config-set preferred_state beta
     - pear update
@@ -17,7 +19,9 @@ before_script:
     - phpenv rehash
 
 script:
-    ## PHP_CodeSniffer
-    - phpcs --standard=PSR2 src/
     ## PHPUnit
     - phpunit
+    ## PHP_CodeSniffer
+    - phpcs --standard=PSR2 src/
+    ## PHP Copy/Paste
+    - php phpcpd.phar --verbose src/
