@@ -1,0 +1,23 @@
+{
+    "name": "elefanto/http",
+    "description": "provide an interface for performing Hyper-Text Transfer Protocol (HTTP)",
+    "license": "BSD-style",
+    "keywords": ["elefanto", "http"],
+    "authors": [
+        {
+            "name": "Vincent Letourneau"
+        }
+    ],
+    "required": {
+        "php": ">=5.4.0"
+    },
+    "required-dev": {
+        "phpunit/phpunit": "4.0.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Elefanto\\Http": ""
+        } 
+    },
+    "target-dir": "Elefanto/Http"
+}

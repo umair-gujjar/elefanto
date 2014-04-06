@@ -8,7 +8,6 @@
     "authors": [
         {
             "name": "Vincent Letourneau",
-            "email": "vincent@nanoninja.org"
         }
     ],
     "repositories": [
@@ -33,7 +32,7 @@
         "php": ">=5.4.0"
     },
     "required-dev": {
-        "phpunit/phpunit": "3.7.*"
+        "phpunit/phpunit": "4.0.0"
     },
     "autoload": {
         "psr-0": {

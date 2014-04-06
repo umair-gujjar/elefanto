@@ -1,8 +1,8 @@
 language: php
 
 php:
-    ## - 5.4
     - 5.5
+    #- hhvm
 
 before_script:
     ## Composer
@@ -11,8 +11,6 @@ before_script:
     - php composer.phar selfupdate
     ## Pear
     - pear config-set preferred_state beta
-    - pear update
-    - pear upgrade-all
     - pear install --alldeps PHP_CodeSniffer
     - phpenv rehash
 
