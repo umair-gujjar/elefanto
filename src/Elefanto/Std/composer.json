@@ -1,8 +1,8 @@
 {
-    "name": "nanoninja/http",
-    "description": "provides an interface for performing Hyper-Text Protocol (HTTP)",
+    "name": "nanoninja/std",
+    "description": "provides a standard library",
     "license": "BSD-3-Clause",
-    "keywords": ["elfanto", "http"],
+    "keywords": ["elfanto", "std"],
     "authors": [
         {
             "name": "Vincent Letourneau"
@@ -11,10 +11,10 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
-            "Elefanto\\Http\\": ""
+            "Elefanto\\Std\\": ""
         }
     },
-    "target-dir": "Elefanto/Http",
+    "target-dir": "Elefanto/Std",
     "require": {
         "php": ">=5.4.0"
     }
