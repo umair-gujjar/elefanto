@@ -2,7 +2,7 @@
     "name": "nanoninja/http",
     "description": "provides an interface for performing Hyper-Text Protocol (HTTP)",
     "license": "BSD-3-Clause",
-    "keywords": ["elfanto", "http"],
+    "keywords": ["elefanto", "http"],
     "authors": [
         {
             "name": "Vincent Letourneau"

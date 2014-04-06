@@ -2,7 +2,7 @@
     "name": "nanoninja/std",
     "description": "provides a standard library",
     "license": "BSD-3-Clause",
-    "keywords": ["elfanto", "std"],
+    "keywords": ["elefanto", "std"],
     "authors": [
         {
             "name": "Vincent Letourneau"
