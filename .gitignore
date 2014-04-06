@@ -1,11 +1,15 @@
 ## Generic files to ignore
 *~
+*.buildpath
 *.lock
 *.DS_Store
 *.swp
 *.out
+*.idea
+*.project
+nbproject
 
 ## PHP specific
-/vendor
+vendor/
 composer.phar
 composer.lock
