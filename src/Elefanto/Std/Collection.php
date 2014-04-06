@@ -24,7 +24,7 @@ class Collection
      * @param  mixed $value
      * @return bool
      */
-    public function isList($value)
+    public static function isList($value)
     {
         if (!is_array($value)) {
             return false;
@@ -51,7 +51,7 @@ class Collection
      * @param  mixed $value
      * @return bool
      */
-    public function isMap($value)
+    public static function isMap($value)
     {
         if (!is_array($value)) {
             return false;
