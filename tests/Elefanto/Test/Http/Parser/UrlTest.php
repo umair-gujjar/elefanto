@@ -61,8 +61,8 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
     public function testUrlCanBeSetAndRetrieveValidHostname()
     {
-        $this->url->setHostname('test');
-        $this->assertEquals('test', $this->url->getHostname());
+        $this->url->setHostname('foo');
+        $this->assertEquals('foo', $this->url->getHostname());
     }
 
     public function testUrlCanBeSetAndRetrieveValidPort()
@@ -83,9 +83,11 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
         $this->assertArrayHasKey('param', $this->url->getQuery());
         $this->assertContains('val', $this->url->getQuery());
+        $this->assertEquals('val', $this->url->getQuery('param'));
 
         $this->assertArrayHasKey('param2', $this->url->getQuery());
         $this->assertContains('val2', $this->url->getQuery());
+        $this->assertEquals('val2', $this->url->getQuery('param2'));
     }
 
     public function testUrlCanBeSetAndRetrieveValidQueryArray()
