@@ -6,6 +6,8 @@
 
 namespace Elefanto\Http\Parser;
 
+use Elefanto\Http\Exception;
+
 class Url
 {
     /**
@@ -142,28 +144,6 @@ class Url
     }
 
     /**
-     * Set the hostname of this Url
-     * 
-     * @param  string $hostname
-     * @return \Elefanto\Http\Parser\Url
-     */
-    public function setHostname($hostname)
-    {
-        $this->hostname = (string) $hostname;
-        return $this;
-    }
-
-    /**
-     * Return the hostname of this Url
-     * 
-     * @return string
-     */
-    public function getHostname()
-    {
-        return $this->hostname;
-    }
-
-    /**
      * Set the username of this Url
      * 
      * @param  string $username
@@ -205,6 +185,28 @@ class Url
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set the hostname of this Url
+     * 
+     * @param  string $hostname
+     * @return \Elefanto\Http\Parser\Url
+     */
+    public function setHostname($hostname)
+    {
+        $this->hostname = (string) $hostname;
+        return $this;
+    }
+
+    /**
+     * Return the hostname of this Url
+     * 
+     * @return string
+     */
+    public function getHostname()
+    {
+        return $this->hostname;
     }
 
     /**
@@ -254,13 +256,14 @@ class Url
     /**
      * Set the query of this Url
      * 
-     * @param  string $query
+     * @param  string|array $query
      * @return \Elefanto\Http\Parser\Url
+     * @throw  \Elefanto\Http\Exception\InvalidArgumentException
      */
     public function setQuery($query)
     {
-        if (!is_string($query) && !is_array($query) && empty($query)) {
-            throw new \InvalidArgumentException(
+        if (empty($query) && (!is_string($query) || !is_array($query))) {
+            throw new Exception\InvalidArgumentException(
                 sprintf(
                     "Parameter provided to %s must be an %s or an %s",
                     __METHOD__,
