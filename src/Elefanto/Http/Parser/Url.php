@@ -332,10 +332,7 @@ class Url
     {
         $parts   = parse_url($this->getRawUrl());
         $getPart = function ($key, $default) use ($parts) {
-            if (isset($parts[$key])) {
-                return $parts[$key];
-            }
-            return $default;
+            return isset($parts[$key]) ? $parts[$key] : $default;
         };
 
         $this->setScheme($getPart('scheme', $this->getScheme()))
