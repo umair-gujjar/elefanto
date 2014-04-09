@@ -330,47 +330,22 @@ class Url
      */
     protected function parse()
     {
-        $parts = parse_url($this->getRawUrl());
-        $get   = function ($key) use ($parts) {
+        $parts   = parse_url($this->getRawUrl());
+        $getPart = function ($key, $default) use ($parts) {
             if (isset($parts[$key])) {
                 return $parts[$key];
             }
             return null;
         };
 
-        if (($val = $get('scheme'))) {
-            $this->setScheme($val);
-        }
+        $this->setScheme($getPart('scheme', $this->getScheme()))
+             ->setUsername($getPart('user', $this->getUsername()))
+             ->setPassword($getPart('pass', $this->getPassword()))
+             ->setHostname($getPart('host', $this->getHostname()))
+             ->setPath($getPart('path', $this->getPath()))
+             ->setQuery($getPart('query', $this->getQuery()))
+             ->setFragment($getPart('fragment', $this->getFragment()));
 
-        if (($val = $get('user'))) {
-            $this->setUsername($val);
-        }
-
-        if (($val = $get('pass'))) {
-            $this->setPassword($val);
-        }
-
-        if (($val = $get('host'))) {
-            $this->setHostname($val);
-        }
-
-        if (($val = $get('port'))) {
-            $this->setPort($val);
-        }
-
-        if (($val = $get('path'))) {
-            $this->setPath($val);
-        }
-
-        if (($val = $get('query'))) {
-            $this->setQuery($val);
-        }
-
-        if (($val = $get('fragment'))) {
-            $this->setFragment($val);
-        }
-
-        unset($val, $get);
         return $this;
     }
 }
