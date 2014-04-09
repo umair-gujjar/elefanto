@@ -335,7 +335,7 @@ class Url
             if (isset($parts[$key])) {
                 return $parts[$key];
             }
-            return null;
+            return $default;
         };
 
         $this->setScheme($getPart('scheme', $this->getScheme()))
