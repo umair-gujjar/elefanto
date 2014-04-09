@@ -1,5 +1,6 @@
 <?php
-/* Copyright 2014 The Elefanto Authors. All rights Reserved.
+/**
+ * Copyright 2014 The Elefanto Authors. All rights Reserved.
  * Use of this source code is governed by a BSD-style
  * licence that can be found in the LICENCE file.
  */
@@ -330,39 +331,46 @@ class Url
     protected function parse()
     {
         $parts = parse_url($this->getRawUrl());
+        $get   = function ($key) use ($parts) {
+            if (isset($parts[$key])) {
+                return $parts[$key];
+            }
+            return null;
+        };
 
-        if (isset($parts['scheme'])) {
-            $this->setScheme($parts['scheme']);
+        if (($val = $get('scheme'))) {
+            $this->setScheme($val);
         }
 
-        if (isset($parts['user'])) {
-            $this->setUsername($parts['user']);
+        if (($val = $get('user'))) {
+            $this->setUsername($val);
         }
 
-        if (isset($parts['pass'])) {
-            $this->setPassword($parts['pass']);
+        if (($val = $get('pass'))) {
+            $this->setPassword($val);
         }
 
-        if (isset($parts['host'])) {
-            $this->setHostname($parts['host']);
+        if (($val = $get('host'))) {
+            $this->setHostname($val);
         }
 
-        if (isset($parts['port'])) {
-            $this->setPort($parts['port']);
+        if (($val = $get('port'))) {
+            $this->setPort($val);
         }
 
-        if (isset($parts['path'])) {
-            $this->setPath($parts['path']);
+        if (($val = $get('path'))) {
+            $this->setPath($val);
         }
 
-        if (isset($parts['query'])) {
-            $this->setQuery($parts['query']);
+        if (($val = $get('query'))) {
+            $this->setQuery($val);
         }
 
-        if (isset($parts['fragment'])) {
-            $this->setFragment($parts['fragment']);
+        if (($val = $get('fragment'))) {
+            $this->setFragment($val);
         }
 
+        unset($val, $get);
         return $this;
     }
 }

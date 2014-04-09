@@ -105,8 +105,8 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
     public function testUrlCanBeSetAndRetrieveValidFragment()
     {
-       $this->url->setFragment('anchor');
-       $this->assertEquals('anchor', $this->url->getFragment()); 
+        $this->url->setFragment('anchor');
+        $this->assertEquals('anchor', $this->url->getFragment());
     }
 
     public function uriDataProvider()
@@ -114,4 +114,3 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         return "http://username:password@hostname/path?arg=value#anchor";
     }
 }
-
