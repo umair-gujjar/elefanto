@@ -91,6 +91,7 @@ class Uri
     public function setRawUri($uri)
     {
         $this->rawUri = (string) $uri;
+        $this->parse();
         return $this;
     }
 
@@ -214,7 +215,7 @@ class Uri
         return $this->params;
     }
 
-    public function parse()
+    protected function parse()
     {
         $params = '';
         $path = $uri = $this->getRawUri();
