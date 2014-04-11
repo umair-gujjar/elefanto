@@ -7,9 +7,10 @@
 
 namespace Elefanto\Test\Http\Parser;
 
+use PHPUnit_Framework_TestCase as TestCase;
 use Elefanto\Http\Parser\Url;
 
-class UrlTest extends \PHPUnit_Framework_TestCase
+class UrlTest extends TestCase
 {
     private $url = null;
 

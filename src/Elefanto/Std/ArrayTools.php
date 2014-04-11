@@ -29,6 +29,10 @@ class ArrayTools
      */
     public static function listToMap(array $list)
     {
+        if (empty($list)) {
+            return $list;
+        }
+
         $list  = array_values($list);
         $keys  = $values = array();
         $count = count($list);
@@ -66,7 +70,7 @@ class ArrayTools
      */
     public static function isList($value)
     {
-        if (!is_array($value)) {
+        if (!is_array($value) || empty($value)) {
             return false;
         }
 
@@ -93,7 +97,7 @@ class ArrayTools
      */
     public static function isMap($value)
     {
-        if (!is_array($value)) {
+        if (!is_array($value) || empty($value)) {
             return false;
         }
 
