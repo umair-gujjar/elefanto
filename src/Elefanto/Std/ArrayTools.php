@@ -26,6 +26,7 @@ class ArrayTools
      */
     public static function listToMap(array $list)
     {
+        $list = array_values($list);
         $keys = $values = array();
         $count = count($list);
 
