@@ -15,10 +15,13 @@ class ArrayTools
      * For example:
      * <code>
      * $list = array('A', 'B', 'C', 'D');
-     * $map = array('A' => 'B', 'C' => 'D');
+     * $map = array('A' => 'B', 'C' => 'D');   // output
      *
      * $list = array('A', 'B', 'C');
-     * $map = array('A' => 'B', 'C' => null);
+     * $map = array('A' => 'B', 'C' => null);  // output
+     *
+     * $assoc = array('A' => 'B', 'C' => 'D');
+     * $map = array('B' => 'D');               // output
      * </code>
      *
      * @param  array $list
@@ -26,8 +29,8 @@ class ArrayTools
      */
     public static function listToMap(array $list)
     {
-        $list = array_values($list);
-        $keys = $values = array();
+        $list  = array_values($list);
+        $keys  = $values = array();
         $count = count($list);
 
         for ($i = 0; $i < $count; $i++) {
