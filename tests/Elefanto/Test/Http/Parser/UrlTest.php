@@ -15,7 +15,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->url = new Url($this->uriDataProvider());
+        $this->url = new Url($this->uriDataProvider(), 'Test');
     }
 
     public function tearDown()
@@ -26,6 +26,13 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     public function testInstanceOf()
     {
         $this->assertInstanceOf('Elefanto\Http\Parser\Url', $this->url);
+    }
+
+    public function testUrlCanBeConstruct()
+    {
+        $url = new Url($this->uriDataProvider(), 'Test');
+        $this->assertEquals($url->getRawUrl(), $this->uriDataProvider());
+        $this->assertEquals($url->getLabel(), 'Test');
     }
 
     public function testUrlCanBeSetAndRetrieveValidLabel()
@@ -101,6 +108,11 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('Elefanto\Http\Exception\InvalidArgumentException');
         $this->url->setQuery('');
+    }
+
+    public function testUrlCantBeGetRetrieveQueryValue()
+    {
+        $this->assertNull($this->url->getQuery('badParam'));
     }
 
     public function testUrlCanBeSetAndRetrieveValidFragment()
