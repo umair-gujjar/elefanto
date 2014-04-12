@@ -52,6 +52,26 @@ class Parser
     private $path = '/';
 
     /**
+     * @var string
+     */
+    private $dirname;
+
+    /**
+     * @var string
+     */
+    private $basename;
+
+    /**
+     * @var string
+     */
+    private $filename;
+
+    /**
+     * @var string
+     */
+    private $extension;
+
+    /**
      * @var array
      */
     private $query = array();
@@ -255,6 +275,94 @@ class Parser
     }
 
     /**
+     * Set the dirname of this Uri
+     * 
+     * @param  string $dirname
+     * @return \Elefanto\Uri\Parser
+     */
+    public function setDirname($dirname)
+    {
+        $this->dirname = (string) $dirname;
+        return $this;
+    }
+
+    /**
+     * Return the dirname of this Uri
+     * 
+     * @return string
+     */
+    public function getDirname()
+    {
+        return $this->dirname;
+    }
+
+    /**
+     * Set the base name of this Uri
+     * 
+     * @param  string $basename
+     * @return \Elefanto\Uri\Parser
+     */
+    public function setBasename($basename)
+    {
+        $this->basename = (string) $basename;
+        return $this;
+    }
+
+    /**
+     * Return the basename of this Uri
+     * 
+     * @return string
+     */
+    public function getBasename()
+    {
+        return $this->basename;
+    }
+
+    /**
+     * Set the filename of this Uri
+     *
+     * @param  string $filename
+     * @return \Elefanto\Uri\Parser
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = (string) $filename;
+        return $this;
+    }
+
+    /**
+     * Return the filename of this Uri
+     *
+     * @return string
+     */
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
+    /**
+     * Set the extension of this Uri
+     *
+     * @param  string $extension
+     * @return \Elefanto\Uri\Parser
+     */
+    public function setExtension($extension)
+    {
+        $this->extension = (string) $extension;
+        return $this;
+    }
+
+    /**
+     * Return the extension of this Uri
+     *
+     * @return string
+     */
+    public function getExtension()
+    {
+        return $this->extension;
+    }
+
+    /**
      * Set the query of this Uri
      * 
      * @param  string|array $query
@@ -263,7 +371,7 @@ class Parser
      */
     public function setQuery($query)
     {
-        if (empty($query) && (!is_string($query) || !is_array($query))) {
+        if (!is_string($query) && !is_array($query)) {
             throw new Exception\InvalidArgumentException(
                 sprintf(
                     "Parameter provided to %s must be an %s or an %s",
@@ -278,7 +386,7 @@ class Parser
             parse_str($query, $query);
         }
 
-        $this->query = $query;
+        $this->query = (array) $query;
         return $this;
     }
 
@@ -324,6 +432,25 @@ class Parser
     }
 
     /**
+     * Returns information about a file path
+     * 
+     * @param  string $path
+     * @return array
+     */
+    protected function pathinfo($path)
+    {
+        $keys    = array('dirname', 'basename', 'filename', 'extension');
+        $default = array_fill_keys($keys, '');
+        $infos   = array_merge($default, pathinfo($path));
+
+        if ($infos[$keys[0]] == '.') {
+            $infos[$keys[0]] = $path;
+        }
+
+        return $infos;
+    }
+
+    /**
      * Parse uri
      *
      * @see    http://tools.ietf.org/html/rfc3986#appendix-B 
@@ -343,6 +470,13 @@ class Parser
              ->setPath($getPart('path', $this->getPath()))
              ->setQuery($getPart('query', $this->getQuery()))
              ->setFragment($getPart('fragment', $this->getFragment()));
+
+        $pathinfo = $this->pathinfo($this->getPath());
+
+        $this->setDirname($pathinfo['dirname'])
+             ->setBasename($pathinfo['basename'])
+             ->setFilename($pathinfo['filename'])
+             ->setExtension($pathinfo['extension']);
 
         return $this;
     }

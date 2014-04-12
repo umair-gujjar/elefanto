@@ -85,6 +85,30 @@ class ParserTest extends TestCase
         $this->assertEquals('/path/one', $this->uri->getPath());
     }
 
+    public function testParserCanBeSetAndGetRetrieveValidDirname()
+    {
+        $this->uri->setDirname('/dir/name');
+        $this->assertEquals('/dir/name', $this->uri->getDirname());
+    }
+
+    public function testParserCanBeSetAndGetRetrieveValidBasename()
+    {
+        $this->uri->setBasename('index.html');
+        $this->assertEquals('index.html', $this->uri->getBasename());
+    }
+
+    public function testParserCanBeSetAndGetRetrieveValidFilename()
+    {
+        $this->uri->setFilename('index');
+        $this->assertEquals('index', $this->uri->getFilename());
+    }
+
+    public function testParserCanBeSetAndGetRetrieveValideExtension()
+    {
+        $this->uri->setExtension('php');
+        $this->assertEquals('php', $this->uri->getExtension());
+    }
+
     public function testParserCanBeSetAndRetrieveValidQueryString()
     {
         $this->uri->setQuery('param=val&param2=val2');
@@ -108,7 +132,7 @@ class ParserTest extends TestCase
     public function testParserCantBeSetInvalidQueryArgumentException()
     {
         $this->setExpectedException('Elefanto\Uri\Exception\InvalidArgumentException');
-        $this->uri->setQuery('');
+        $this->uri->setQuery(2);
     }
 
     public function testParserCantBeGetRetrieveQueryValue()
@@ -116,14 +140,30 @@ class ParserTest extends TestCase
         $this->assertNull($this->uri->getQuery('badParam'));
     }
 
-    public function testParserCanBeSetAndRetrieveValidFragment()
+    public function testParserCanBeSetAndGetRetrieveValidFragment()
     {
         $this->uri->setFragment('anchor');
         $this->assertEquals('anchor', $this->uri->getFragment());
     }
 
+    public function testParserCantBeRetrieveValidPathinfo()
+    {
+        $uri = new Parser('test');
+        $this->assertEquals('test', $uri->getDirname());
+    }
+
+    public function testParserCanBeRetrievePathValidPathinfo()
+    {
+        $uri = new Parser($this->uriDataProvider());
+        $this->assertEquals('/path/index.php', $uri->getPath());
+        $this->assertEquals('/path', $uri->getDirname());
+        $this->assertEquals('index.php', $uri->getBasename());
+        $this->assertEquals('index', $uri->getFilename());
+        $this->assertEquals('php', $uri->getExtension());
+    }
+
     public function uriDataProvider()
     {
-        return "http://username:password@hostname/path?arg=value#anchor";
+        return "http://username:password@hostname.local/path/index.php?arg=value#anchor";
     }
 }
