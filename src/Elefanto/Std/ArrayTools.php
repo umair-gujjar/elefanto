@@ -7,8 +7,58 @@
 
 namespace Elefanto\Std;
 
+use Elefanto\Std\Exception;
+
 class ArrayTools
 {
+    /**
+     * Convert Array map to object
+     *
+     * <code>
+     * $array = array(
+     *     'a' => 1,
+     *     'b' => 2,
+     *     'c' => array(
+     *          'd' => 3,
+     *     ),
+     * ); 
+     *
+     * $object = mapToObject($array);
+     * $object->c->d;
+     * </code>
+     *
+     * @param  array $array
+     * @return stdClass
+     */
+    public static function mapToObject(array $array)
+    {
+        if (empty($array)) {
+            return new \stdClass();
+        }
+
+        return json_decode(json_encode($array, true));
+    }
+
+    /**
+     * Convert an Object to Array
+     *
+     * @param  object $object
+     * @return array
+     */
+    public static function objectToMap($object)
+    {
+        if (!is_object($object)) {
+            throw new Exception\InvalidArgumentException(
+                sprintf(
+                    'Invalid type given to %s. Object expected',
+                    __METHOD__
+                )
+            );
+        }
+
+        return json_decode(json_encode($object), true);
+    }
+
     /**
      * Convert a simple array list to map (assoc) 
      *

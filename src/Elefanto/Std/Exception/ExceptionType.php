@@ -7,7 +7,7 @@
 
 namespace Elefanto\Std\Exception;
 
-interface ExceptionHandler
+interface ExceptionType
 {
 
 }
