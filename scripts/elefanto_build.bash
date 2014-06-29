@@ -13,6 +13,7 @@ DOC_TITLE="Elefanto Framework"
 # CHECK IF vendor EXISTS
 if [ ! -d "$VENDOR_PATH" ]; then
     echo "Error: The path $ROOT_PATH/vendor doesn't exists."
+    echo "Please, install phpunit with composer"
     exit
 fi
 
