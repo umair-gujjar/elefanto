@@ -10,7 +10,19 @@ REPORT_PATH=$ROOT_PATH/report
 # APIGEN CONF
 DOC_TITLE="Elefanto Framework"
 
+# CHECK IF vendor EXISTS
+if [ ! -d "$VENDOR_PATH" ]; then
+    echo "Error: The path $ROOT_PATH/vendor doesn't exists."
+    exit
+fi
 
+# CHECK IF report EXISTS
+if [ ! -d "$REPORT_PATH" ]; then
+    mkdir -p $REPORT_PATH/doc $REPORT_PATH/coverage
+fi
+
+
+# RUN BUILDER
 cd $ROOT_PATH
 
 echo ""
