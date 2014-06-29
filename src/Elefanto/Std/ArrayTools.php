@@ -14,6 +14,7 @@ class ArrayTools
     /**
      * Convert Array map to object
      *
+     * For example:
      * <code>
      * $array = array(
      *     'a' => 1,
@@ -23,8 +24,8 @@ class ArrayTools
      *     ),
      * ); 
      *
-     * $object = mapToObject($array);
-     * $object->c->d;
+     * $object = ArrayTools::mapToObject($array);
+     * echo $object->c->d;
      * </code>
      *
      * @param  array $array
@@ -42,8 +43,19 @@ class ArrayTools
     /**
      * Convert an Object to Array
      *
+     * For example:
+     * <code>
+     * $object = new stdClass();
+     * $object->a = 5;
+     * $object->b = 2;
+     *
+     * $array = ArrayTools::objectToMap($object)
+     * $array['a'] + $array['b']; // output 7
+     * </code>
+     *
      * @param  object $object
      * @return array
+     * @throw  \Elefanto\Std\Exception\InvalidArgumentException
      */
     public static function objectToMap($object)
     {
@@ -64,13 +76,13 @@ class ArrayTools
      *
      * For example:
      * <code>
-     * $list = array('A', 'B', 'C', 'D');
+     * $list = array('A', 'B', 'C', 'D');      // in
      * $map = array('A' => 'B', 'C' => 'D');   // output
      *
-     * $list = array('A', 'B', 'C');
+     * $list = array('A', 'B', 'C');           // in
      * $map = array('A' => 'B', 'C' => null);  // output
      *
-     * $assoc = array('A' => 'B', 'C' => 'D');
+     * $assoc = array('A' => 'B', 'C' => 'D'); // in
      * $map = array('B' => 'D');               // output
      * </code>
      *
@@ -107,12 +119,17 @@ class ArrayTools
      * 
      * For example:
      * <code>
-     * $list = ['foo', 'bar'];
-     * $list = array(
+     * $a = ['foo', 'bar'];
+     * $b = array('key' => 'value', 1 => 2);
+     * $c = array(
      *     '1' => 'a',
      *     '2' => 'b',
      *      3  => 'c',
      * );
+     *
+     * ArrayTools::isList($a); // true
+     * ArrayTools::isList($b); // false
+     * ArrayTools::isList($c); // true
      * </code>
      * 
      * @param  mixed $value
