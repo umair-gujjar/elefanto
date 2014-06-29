@@ -12,6 +12,52 @@ use Elefanto\Std\Exception;
 class ArrayTools
 {
     /**
+     * Filters recursively an array with a user function
+     *
+     * For example:
+     * <code>
+     * $data = array(
+     *     'id' => 5,
+     *     0 => 5,
+     *     'language' => 'php',
+     *     1 => 'php',
+     *     'category' => array(
+     *         'label' => 'Array',
+     *         0 => 'Array',
+     *     ),
+     * );
+     * 
+     * $data = ArrayTools::filterRecursive($data, function ($key, $value) {
+     *      return is_string($key);
+     * });
+     * 
+     * array('id' => 5, 'language' => 'php', 'category' => array('label' => 'Array')); // output
+     * </code>
+     * 
+     * @param  array $array
+     * @param  callable $fn
+     * @return array
+     */
+    public static function filterRecursive(array $array, callable $fn)
+    {
+        $result = [];
+
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                $result[$key] = filterRecursive($value, $fn);
+                continue;
+            }
+
+            if ($fn($key, $value)) {
+                $result[$key] = $value;
+                continue;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
      * Converts an Array map to object
      *
      * For example:

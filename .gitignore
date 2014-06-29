@@ -11,5 +11,6 @@ nbproject
 
 ## PHP specific
 vendor/
+report/
 composer.phar
 composer.lock
