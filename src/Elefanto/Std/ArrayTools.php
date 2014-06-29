@@ -12,7 +12,7 @@ use Elefanto\Std\Exception;
 class ArrayTools
 {
     /**
-     * Convert Array map to object
+     * Converts an Array map to object
      *
      * For example:
      * <code>
@@ -41,7 +41,7 @@ class ArrayTools
     }
 
     /**
-     * Convert an Object to Array
+     * Converts an Object to Array
      *
      * For example:
      * <code>
@@ -72,7 +72,7 @@ class ArrayTools
     }
 
     /**
-     * Convert a simple array list to map (assoc) 
+     * Converts a simple array list to map (assoc) 
      *
      * For example:
      * <code>
@@ -115,7 +115,7 @@ class ArrayTools
     }
 
     /**
-     * Test whether an array is an array list
+     * Tests whether an array is an array list
      * 
      * For example:
      * <code>
@@ -145,7 +145,7 @@ class ArrayTools
     }
 
     /**
-     * Test whether an array is a map.
+     * Tests whether an array is a map.
      * 
      * For example:
      * <code>
