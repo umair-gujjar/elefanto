@@ -174,9 +174,9 @@ class ArrayTools
      *      3  => 'c',
      * );
      *
-     * ArrayTools::isList($a); // true
-     * ArrayTools::isList($b); // false
-     * ArrayTools::isList($c); // true
+     * Elefanto\Std\ArrayTools::isList($a); // true
+     * Elefanto\Std\ArrayTools::isList($b); // false
+     * Elefanto\Std\ArrayTools::isList($c); // true
      * </code>
      * 
      * @param  mixed $value
