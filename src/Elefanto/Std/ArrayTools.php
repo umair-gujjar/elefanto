@@ -96,7 +96,7 @@ class ArrayTools
      * $object->a = 5;
      * $object->b = 2;
      *
-     * $array = ArrayTools::objectToMap($object)
+     * $array = Elefanto\Std\ArrayTools::objectToMap($object);
      * $array['a'] + $array['b']; // output 7
      * </code>
      *
