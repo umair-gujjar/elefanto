@@ -27,7 +27,7 @@ class ArrayTools
      *     ),
      * );
      * 
-     * $data = ArrayTools::filterRecursive($data, function ($key, $value) {
+     * $data = Elefanto\Std\ArrayTools::filterRecursive($data, function($key, $value) {
      *      return is_string($key);
      * });
      * 
@@ -45,7 +45,7 @@ class ArrayTools
 
         foreach ($array as $key => $value) {
             if (is_array($value)) {
-                $result[$key] = filterRecursive($value, $fn);
+                $result[$key] = self::filterRecursive($value, $fn);
                 continue;
             }
 
@@ -71,7 +71,7 @@ class ArrayTools
      *     ),
      * ); 
      *
-     * $object = ArrayTools::mapToObject($array);
+     * $object = Elefanto\Std\ArrayTools::mapToObject($array);
      * echo $object->c->d;
      * </code>
      *
