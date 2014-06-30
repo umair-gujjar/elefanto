@@ -22,8 +22,8 @@ class ArrayTools
      *     'language' => 'php',
      *     1 => 'php',
      *     'category' => array(
-     *         'label' => 'Array',
-     *         0 => 'Array',
+     *         'label' => 'Array Filter',
+     *         0 => 'Array Filter',
      *     ),
      * );
      * 
@@ -31,7 +31,8 @@ class ArrayTools
      *      return is_string($key);
      * });
      * 
-     * array('id' => 5, 'language' => 'php', 'category' => array('label' => 'Array')); // output
+     * // output
+     * array('id' => 5, 'language' => 'php', 'category' => array('label' => 'Array Filter'));
      * </code>
      * 
      * @param  array $array
